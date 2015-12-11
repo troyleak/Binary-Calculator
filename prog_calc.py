@@ -20,7 +20,7 @@ class App:
 
         self.result = tk.Label(master, text="0")
         self.error = tk.Label(master, text="")
-        self.credits = tk.Label(master, text="Copyright 2015 Troy Leak")
+        self.credits = tk.Label(master, text="Copyright whatever idc")
 
         self.quit_button = tk.Button(master, text="Quit", fg="red",
             command=master.quit)
@@ -51,7 +51,7 @@ class App:
 
             dst = { 0: bin, 1: oct, 2: int, 3: hex }
             tmp = dst[calc_dst[0]](tmp)
-            
+
             self.error.configure(text="")
             self.result.configure(text=tmp)
         except ValueError:
