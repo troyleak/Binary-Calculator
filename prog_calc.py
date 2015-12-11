@@ -19,6 +19,8 @@ class App:
             self.lstbx2.insert(tk.END, i)
 
         self.result = tk.Label(master, text="0")
+        self.error = tk.Label(master, text="")
+        self.credits = tk.Label(master, text="Copyright 2015 Troy Leak")
 
         self.quit_button = tk.Button(master, text="Quit", fg="red",
             command=master.quit)
@@ -35,7 +37,8 @@ class App:
         self.result.grid(row=1, column=1)
         self.submit_button.grid(row=2, column=0)
         self.quit_button.grid(row=2, column=1)
-
+        self.credits.grid(row=3, column = 0)
+        self.error.grid(row=3, column = 1)
 
     def submit(self):
         try:
@@ -43,27 +46,17 @@ class App:
             calc_src = self.lstbx1.curselection()
             calc_dst = self.lstbx2.curselection()
 
-            if (calc_src[0] == 0): # "Binary"
-                tmp = int(tmp, 2)
-            elif (calc_src[0] == 1): # "Octal"
-                tmp = int(tmp, 8)
-            elif (calc_src[0] == 2): # "Decimal"
-                tmp = int(tmp)
-            elif (calc_src[0] == 3): # "Hexadecimal"
-                tmp = int(tmp, 16)
+            src = { 0: 2, 1: 8, 2: 10, 3: 16 }
+            tmp = int(tmp, src[calc_src[0]])
 
-            if (calc_dst[0] == 0): # "Binary"
-                tmp = bin(tmp)
-            elif (calc_dst[0] == 1): # "Octal"
-                tmp = oct(tmp)
-            elif (calc_dst[0] == 2): # "Decimal"
-                tmp = int(tmp)
-            elif (calc_dst[0] == 3): # "Hexadecimal"
-                tmp = hex(tmp)
-
+            dst = { 0: bin, 1: oct, 2: int, 3: hex }
+            tmp = dst[calc_dst[0]](tmp)
+            
+            self.error.configure(text="")
             self.result.configure(text=tmp)
-        except:
-            pass
+        except ValueError:
+            self.error.configure(text="ERR")
+            print("Error, cannot convert the specified input")
 
 
 root = tk.Tk()
