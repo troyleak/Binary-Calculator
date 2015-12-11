@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 # python program to convert and calculate values for Assembly programming
 # TODO: implement signed and unsigned arithmetic
+#       validate user input
 
 import tkinter as tk
 
