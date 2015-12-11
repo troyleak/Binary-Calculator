@@ -1,7 +1,5 @@
 #! /usr/bin/python3
 # python program to convert and calculate values for Assembly programming
-# TODO: implement signed and unsigned arithmetic
-#       validate user input
 
 import tkinter as tk
 
@@ -40,29 +38,32 @@ class App:
 
 
     def submit(self):
-        tmp = self.entry.get()
-        calc_src = self.lstbx1.curselection()
-        calc_dst = self.lstbx2.curselection()
+        try:
+            tmp = self.entry.get()
+            calc_src = self.lstbx1.curselection()
+            calc_dst = self.lstbx2.curselection()
 
-        if (calc_src[0] == 0): # "Binary"
-            tmp = int(tmp, 2)
-        elif (calc_src[0] == 1): # "Octal"
-            tmp = int(tmp, 8)
-        elif (calc_src[0] == 2): # "Decimal"
-            tmp = int(tmp)
-        elif (calc_src[0] == 3): # "Hexadecimal"
-            tmp = int(tmp, 16)
+            if (calc_src[0] == 0): # "Binary"
+                tmp = int(tmp, 2)
+            elif (calc_src[0] == 1): # "Octal"
+                tmp = int(tmp, 8)
+            elif (calc_src[0] == 2): # "Decimal"
+                tmp = int(tmp)
+            elif (calc_src[0] == 3): # "Hexadecimal"
+                tmp = int(tmp, 16)
 
-        if (calc_dst[0] == 0): # "Binary"
-            tmp = bin(tmp)
-        elif (calc_dst[0] == 1): # "Octal"
-            tmp = oct(tmp)
-        elif (calc_dst[0] == 2): # "Decimal"
-            tmp = int(tmp)
-        elif (calc_dst[0] == 3): # "Hexadecimal"
-            tmp = hex(tmp)
+            if (calc_dst[0] == 0): # "Binary"
+                tmp = bin(tmp)
+            elif (calc_dst[0] == 1): # "Octal"
+                tmp = oct(tmp)
+            elif (calc_dst[0] == 2): # "Decimal"
+                tmp = int(tmp)
+            elif (calc_dst[0] == 3): # "Hexadecimal"
+                tmp = hex(tmp)
 
-        self.result.configure(text=tmp)
+            self.result.configure(text=tmp)
+        except:
+            pass
 
 
 root = tk.Tk()
