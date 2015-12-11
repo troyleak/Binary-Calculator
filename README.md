@@ -10,4 +10,4 @@ $cd /download/location
 $python3 prog_calc.py
 ````
 
-Signed arithmetic is not supported, you'll need to convert signed integer values to unsigned for the calculations to be correct
+Signed integers are not supported, you'll need to convert them to unsigned for the calculations to be correct
