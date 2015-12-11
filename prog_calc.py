@@ -30,7 +30,7 @@ class App:
 
 
     def layout(self):
-        self.lstbx1.grid(row=0, column=0) # unused
+        self.lstbx1.grid(row=0, column=0)
         self.lstbx2.grid(row=0, column=1)
         self.entry.grid(row=1, column=0)
         self.result.grid(row=1, column=1)
